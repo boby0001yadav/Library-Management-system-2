@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Member Dashboard</h2>
+
+{% for b in books %}
+<p>{{b[1]}} - {{b[2]}}</p>
+{% endfor %}
+
+{% endblock %}
