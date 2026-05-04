@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-4">
+
+    <div class="card shadow p-4">
+      <h3 class="text-center mb-3">🔐 Login</h3>
+
+      <form method="post">
+
+        <div class="mb-3">
+          <label>Username</label>
+          <input type="text" name="username" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label>Password</label>
+          <input type="password" name="password" class="form-control" required>
+        </div>
+
+        <button class="btn btn-primary w-100">Login</button>
+
+      </form>
+
+      <p class="text-center mt-3 text-muted">
+        Use: <br>
+        <b>admin / admin</b> (Admin) <br>
+        <b>user / user</b> (Member)
+      </p>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
