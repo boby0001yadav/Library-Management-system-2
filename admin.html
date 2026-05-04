@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<div class="row text-center">
+<div class="col">Total: {{stats.total}}</div>
+<div class="col">Issued: {{stats.issued}}</div>
+<div class="col">Available: {{stats.available}}</div>
+<div class="col">Fine: ₹{{stats.fine}}</div>
+</div>
+
+<canvas id="chart"></canvas>
+
+<script>
+new Chart(document.getElementById("chart"), {
+type: 'bar',
+data: {
+labels: ["Total","Issued","Available"],
+datasets: [{data: [{{stats.total}},{{stats.issued}},{{stats.available}}]}]
+}
+});
+</script>
+
+<form method="post" action="/add">
+<input name="title" class="form-control mt-3" placeholder="Title">
+<input name="author" class="form-control mt-2" placeholder="Author">
+<button class="btn btn-success mt-2">Add</button>
+</form>
+
+<form method="post" action="/search">
+<input name="query" class="form-control mt-2" placeholder="Search">
+<button class="btn btn-info mt-2">Search</button>
+</form>
+
+<table class="table mt-3">
+{% for b in books %}
+<tr>
+<td>{{b[1]}}</td>
+<td>
+{% if b[3]==1 %}
+<a href="/issue/{{b[0]}}" class="btn btn-primary">Issue</a>
+{% else %}
+Issued
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}
